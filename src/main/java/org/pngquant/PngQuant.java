@@ -1,7 +1,6 @@
 package org.pngquant;
 
-import org.pngquant.*;
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Starting point for the library. Holds configuration. Equivalent of liq_attr* in libimagequant.
@@ -98,6 +97,7 @@ public class PngQuant extends LiqObject {
      */
     public native boolean setMinPosterization(int bits);
 
+    @Override
     public void close() {
         if (handle != 0) {
             liq_attr_destroy(handle);

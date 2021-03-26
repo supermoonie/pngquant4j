@@ -57,6 +57,7 @@ abstract class LiqObject {
      */
     abstract public void close();
 
+    @Override
     protected void finalize() throws Throwable {
         close();
     }

@@ -1,7 +1,9 @@
 package org.pngquant;
 
-import org.pngquant.*;
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferByte;
+import java.awt.image.IndexColorModel;
 
 /**
  * Quantization result that holds palette and options for remapping.
@@ -66,6 +68,7 @@ public class Result extends LiqObject {
      */
     public native int getQuality();
 
+    @Override
     public void close() {
         if (handle != 0) {
             liq_result_destroy(handle);
