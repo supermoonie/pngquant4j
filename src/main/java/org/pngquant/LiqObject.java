@@ -24,15 +24,22 @@ abstract class LiqObject {
         }
         FileUtils.cleanDirectory(directory);
 
-        FileUtils.copyInputStreamToFile(
-                getResourceAsStream(File.separator + "libimagequant" + File.separator + "libimagequant.jnilib"),
-                new File(directory, "libimagequant.jnilib"));
+
 
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            FileUtils.copyInputStreamToFile(
+                    getResourceAsStream(File.separator + "libimagequant" + File.separator + "libimagequant.jnilib"),
+                    new File(directory, "libimagequant.jnilib"));
             System.load(directory.getPath() + File.separator + "libimagequant.jnilib");
         } else if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            FileUtils.copyInputStreamToFile(
+                    getResourceAsStream(File.separator + "libimagequant" + File.separator + "libimagequant.dll"),
+                    new File(directory, "libimagequant.dll"));
             System.load(directory.getPath() + File.separator + "libimagequant.dll");
         } else if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            FileUtils.copyInputStreamToFile(
+                    getResourceAsStream(File.separator + "libimagequant" + File.separator + "libimagequant.so"),
+                    new File(directory, "libimagequant.so"));
             System.load(directory.getPath() + File.separator + "libimagequant.so");
         } else {
             throw new RuntimeException("unsupported os for libimagequant");
